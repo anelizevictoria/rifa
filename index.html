@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rifa Online</title>
+  <style>
+   body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #8B0000, #000000);
+  color: white;
+  padding: 20px;
+  text-align: center;
+}.numero.selecionado 
+    h1 {
+      margin-bottom: 5px;
+    }
+    .info {
+      margin-bottom: 20px;
+    }
+    .numeros {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 600px;
+      margin: auto;
+    }
+    .numero {
+      width: 40px;
+      height: 40px;
+      margin: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color:black;
+    }
+    .numero.selecionado {
+      background-color: lightgreen;
+      font-weight: bold;
+    }
+    .resumo {
+      margin-top: 20px;
+    }<img src="IMG_0970.JPG"/alt="desc
+  </style>
+</head>
+<body>
+
+  <h1>Rifa Online</h1>
+  <div class="info">
+    <p>🏆 Prêmio: <strong> Guidão Hupi Pub + Mesinha Brutus</strong> </p>
+    <p>💸 Valor por número: <strong>R$ 2,50</strong></p>
+    <p>💳 Pagamento: <strong>Pix ou Crédito</strong></p>
+  </div> 
+<p>
+  💸 Pix para pagamento: <strong>44504666839</strong><br>
+  📷 Instagram: <a href="https://instagram.com/bicicletariaivaipora" target="_blank">@bicicletariaivaipora</a>
+</p>
+ 
+ 
+</p>
+   <div class="numeros" id="numeros"></div>
+<button onclick="selecionados.forEach(n => document.querySelector('.numero:nth-child(' + n + ')').style.display = 'none'); selecionados.length = 0; escolhidosTexto.textContent = 'nenhum'; quantidadeTexto.textContent = '0'; totalTexto.textContent = '0.00';">Finalizar Compra</button>
+  <div class="resumo">
+    <p>Números escolhidos: <span id="escolhidos">nenhum</span></p>
+    <p>Total de números: <span id="quantidade">400</span></p>
+    <p>Valor total: R$ <span id="total">0.00</span></p>
+  </div>
+sxss
+  <script>
+    const TOTAL_NUMEROS = 400;
+    const PRECO = 2.5;
+    const numerosContainer = document.getElementById("numeros");
+    const escolhidosTexto = document.getElementById("escolhidos");
+    const quantidadeTexto = document.getElementById("quantidade");
+    const totalTexto = document.getElementById("total");
+
+    const selecionados = [];
+
+    for (let i = 1; i <= TOTAL_NUMEROS; i++) {
+      const btn = document.createElement("div");
+      btn.classList.add("numero");
+      btn.textContent = i;
+
+      btn.addEventListener("click", () => {
+        const index = selecionados.indexOf(i);
+        if (index > -1) {
+          selecionados.splice(index, 1);
+          btn.classList.remove("selecionado");
+        } else {
+          selecionados.push(i);
+          btn.classList.add("selecionado");
+        }
+
+        // Atualizar o resumo
+        escolhidosTexto.textContent = selecionados.length > 0 ? selecionados.join(", ") : "nenhum";
+        quantidadeTexto.textContent = selecionados.length;
+        totalTexto.textContent = (selecionados.length * PRECO).toFixed(2);
+      });
+
+      numerosContainer.appendChild(btn);
+    }
+  </script>
+
+</body>
+
+
+</html> 
